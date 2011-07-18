@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Hitorigoto</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/general.css">
+    <style type="text/css">
+        header {
+            padding-top: 25px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+        }
+
+        #logo {
+            font-size: 20px;
+        }
+
+        header nav ul li {
+            float: left;
+            margin-top: 12px;
+        }
+
+        header nav ul li a {
+            display: block;
+            padding: 5px 15px;
+            border-right: 1px solid #eee;
+            font-size: 1.52em;
+            font-family: Georgia, "Times New Roman", Times, serif;
+            text-decoration: none;
+        }
+
+        header nav ul li a:hover {
+            background-color: #eee;
+            border-right: 1px solid #ccc;
+            text-shadow: -1px -1px 0px #fff;
+        }
+
+        header nav ul li.last a {
+            border-right: none;
+        }
+
+        #grid div {
+            text-align: center;
+        }
+
+        #grid div > .col {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0px;
+            outline: 1px solid #eee;
+        }
+
+        h2 {
+            border-bottom: 1px dashed #ccc;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+            padding: 4px 0px;
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+    <header>
+        <div id="logo" class="col width_16">Hitorigoto</div>
+    </header>
+</div>
+<div class="row">
+    <div class="row">
+        <div class="width_16 align_center">
+            <div id="tweet_box"></div>
+            <span id="login"></span>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="http://platform.twitter.com/anywhere.js?id=fkyxoOHIxFyvm3lxGyVEQ&v=1" type="text/javascript"></script>
+<script type="text/javascript" src="js/lib/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="js/lib/underscore.js"></script>
+<script type="text/javascript" src="js/lib/backbone.js"></script>
+
+<script type="text/javascript">
+    twttr.anywhere(function (T) {
+        T("#tweet_box").tweetBox({
+            height: 50,
+            width: 520
+        });
+    });
+    twttr.anywhere(function (T) {
+        T("#login").connectButton();
+    });
+
+</script>
+</html>
