@@ -92,8 +92,20 @@
             width: 520
         });
     });
+
     twttr.anywhere(function (T) {
-        T("#login").connectButton();
+        if (T.isConnected()) {
+            var current_user = T.currentUser;
+            var screen_name = currentUser.data('screen_name');
+
+            var friends_url = 'http://api.twitter.com/1/friends/ids.json?screen_name=' + screen_name;
+            $.get(friends_url, function(data) {
+               console.log(data);
+            });
+
+        } else {
+            T("#login").connectButton();
+        }
     });
 
 </script>
