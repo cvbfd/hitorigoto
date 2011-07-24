@@ -156,7 +156,7 @@
             if (T.isConnected()) {
                 var current_user = T.currentUser;
                 var screen_name = currentUser.data('screen_name');
-                getFriends('screen_name', "-1");
+                getFriends(screen_name, "-1");
 
             } else {
                 T("#login").connectButton();
