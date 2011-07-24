@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/grid.css">
     <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/jquery.autocomplete.css">
     <style type="text/css">
         header {
             padding-top: 25px;
@@ -80,33 +81,91 @@
 </div>
 
 </body>
+<!--
 <script src="http://platform.twitter.com/anywhere.js?id=fkyxoOHIxFyvm3lxGyVEQ&v=1" type="text/javascript"></script>
+-->
 <script type="text/javascript" src="js/lib/jquery-1.6.2.min.js"></script>
 <script type="text/javascript" src="js/lib/underscore.js"></script>
-<script type="text/javascript" src="js/lib/backbone.js"></script>
+<script type="text/javascript" src="js/lib/jquery.autocomplete.js"></script>
+<script type="text/javascript" src="js/lib/js-model-0.10.1.js"></script>
 
 <script type="text/javascript">
-    twttr.anywhere(function (T) {
-        T("#tweet_box").tweetBox({
-            height: 50,
-            width: 520
-        });
+
+    var User = new Model('user', function() {
+        this.persistence(Model.localStorage);
+        this.extend({
+            find_by_screen_name: function(screen_name) {
+                return this.detect(function() {
+                    return this.attr("screen_name") === screen_name
+                })
+            }
+        })
     });
 
-    twttr.anywhere(function (T) {
-        if (T.isConnected()) {
-            var current_user = T.currentUser;
-            var screen_name = currentUser.data('screen_name');
+    var getFriends = function(screen_name, cursor) {
+        var friends_url = 'http://api.twitter.com/1/statuses/friends.json?screen_name=ninoseki&cursor=' + cursor + '&callback=?';
 
-            var friends_url = 'http://api.twitter.com/1/friends/ids.json?screen_name=' + screen_name;
-            $.get(friends_url, function(data) {
-               console.log(data);
+        $.getJSON(friends_url, {}, function(friends) {
+            for (var i = 0, len = friends.length; i < len; i++) {
+                if (User.find_by_screen_name((friends[i].screen_name)) === undefined) {
+                    var user = new User({screen_name : frieds[i].screen_name});
+                    user.save();
+                    console.log(friends[i].screen_name);
+                }
+            }
+
+            if (friends.next_cursor !== undefined) {
+                getFriend(screen_name, friends.next_cursor);
+            }
+        });
+    }
+
+    var autoCompleteName = function() {
+        $("#tweet_boxx textarea").keyup(function(event) {
+            if ($(this).hasClass("completable") || $("#tweet_box textarea").val()[0] != "@") {
+                return;
+            }
+            $(this).addClass("completable");      // 1度しか発生しないように印を付ける
+            var self = this;
+
+            var data = User.map(function() {
+                return this.attr("screen_name");
             });
 
-        } else {
-            T("#login").connectButton();
-        }
+            $(this).autocomplete(data)
+                    .result(function(event, item) {      // callbackイベントを設定
+                        $(self).val($(self).val() + " "); // @screen_nameの後に半角スペースを1つ置く
+                        $(self).unbind();                 // 自動補完のBindを外す
+                    });
+            $(this).keydown();                    // "@"が既に入力されているので、能動的にkeydownして補完させる
+        });
+    };
+
+
+    $(function() {
+        User.load(function() {
+        });
+
+        twttr.anywhere(function (T) {
+            T("#tweet_box").tweetBox({
+                height: 50,
+                width: 520
+            });
+        });
+
+        twttr.anywhere(function (T) {
+            if (T.isConnected()) {
+                var current_user = T.currentUser;
+                var screen_name = currentUser.data('screen_name');
+                getFriends('screen_name', "-1");
+
+            } else {
+                T("#login").connectButton();
+            }
+        });
+
     });
+
 
 </script>
 </html>
