@@ -155,7 +155,7 @@
         twttr.anywhere(function (T) {
             if (T.isConnected()) {
                 var current_user = T.currentUser;
-                var screen_name = currentUser.data('screen_name');
+                var screen_name = current_user.data('screen_name');
                 getFriends(screen_name, "-1");
 
             } else {
