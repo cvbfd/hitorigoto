@@ -43,9 +43,14 @@
 #dialog-box .dialog-content {
     /* style the content */
     text-align: center;
+    vertical-align: middle;
     padding: 10px;
     margin: 13px auto;
     color: #666;
     font-family: arial;
     font-size: 14px;
 }
+
+#dialog-box .dialog-content p {
+  font-weight: 700;
+  margin: 0; }
