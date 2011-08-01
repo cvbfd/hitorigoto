@@ -1,4 +1,8 @@
 require 'rubygems'
 require 'sinatra'
-get('/') { open('public/index.html').read }
+ 
+set :run, false
+set :environment, ENV['RACK_ENV']
+  
+require 'app'
 run Sinatra::Application
