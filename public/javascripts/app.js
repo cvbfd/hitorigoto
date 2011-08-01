@@ -130,12 +130,13 @@ $(function() {
 
             // show Tweet box
             var id = $(e.currentTarget).parent().attr('id');
+            var content = $('#' + id).find('textarea.tweet-box').val();
             twttr.anywhere(function (T) {
                 T("#tweet-box").tweetBox({
                     label: 'tweet this?',
-                    defaultContent: $('#' + id).find('textarea.tweet-box').val(),
+                    defaultContent: content,
                     onTweet : function(plainText, html) {
-                        this.onTweet(id, plainText)
+                        self.onTweet(id, plainText);
                     }
                 });
             });
