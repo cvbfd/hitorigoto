@@ -2,7 +2,7 @@ $(function() {
     // Model
     var Note = Backbone.Model.extend({
         defaults: {
-            content: 'click here to write',
+            content: '',
             color: 'green',
             x: 40,
             y: 40
@@ -115,6 +115,7 @@ $(function() {
             $(this.el).append(noteView.render().el);
         },
         showPopup: function(e) {
+            var self = this;
             // get the screen height and width
             var maskHeight = $(document).height();
             var maskWidth = $(window).width();
@@ -132,9 +133,15 @@ $(function() {
             twttr.anywhere(function (T) {
                 T("#tweet-box").tweetBox({
                     label: 'tweet this?',
-                    defaultContent: $('#' + id).find('textarea.tweet-box').val()
+                    defaultContent: $('#' + id).find('textarea.tweet-box').val(),
+                    onTweet : function(plaintext, html) {
+                        self.showSuccess();
+                    }
                 });
             });
+        },
+        showSuccess: function() {
+            $('#dialog-box').html('<div class="dialog-content">tweeted!</div>');
         },
         hidePopup: function() {
             $('#dialog-overlay, #dialog-box').hide();
