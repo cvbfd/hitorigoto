@@ -62,7 +62,16 @@
       <file leaf-file-name="note.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/note.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="44" selection-start="611" selection-end="611" vertical-scroll-proportion="0.0">
+            <state line="22" column="16" selection-start="498" selection-end="498" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gemfile" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Gemfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="22" selection-start="40" selection-end="40" vertical-scroll-proportion="0.019953052">
               <folding />
             </state>
           </provider>
@@ -77,10 +86,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="app.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/app.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="149" column="18" selection-start="3637" selection-end="3637" vertical-scroll-proportion="0.7206573">
+            <state line="149" column="18" selection-start="3637" selection-end="3637" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -105,8 +114,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Gemfile" />
-        <option value="$PROJECT_DIR$/public/css/reset.css" />
         <option value="$PROJECT_DIR$/views/index.haml" />
         <option value="$PROJECT_DIR$/views/app.sass" />
         <option value="$PROJECT_DIR$/app.rb" />
@@ -118,9 +125,11 @@
         <option value="$PROJECT_DIR$/public/css/button.css" />
         <option value="$PROJECT_DIR$/public/css/overlay.css" />
         <option value="$PROJECT_DIR$/public/javascripts/app.js" />
-        <option value="$PROJECT_DIR$/public/css/note.css" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/public/css/app.css" />
+        <option value="$PROJECT_DIR$/public/css/note.css" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/Gemfile" />
       </list>
     </option>
   </component>
@@ -285,11 +294,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/css/jquery.autocomplete.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.07746479" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.ru">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="1" selection-start="38" selection-end="38" vertical-scroll-proportion="0.039906103" />
@@ -342,13 +346,6 @@
         <state line="23" column="1" selection-start="581" selection-end="581" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/note.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="44" selection-start="611" selection-end="611" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/reset.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="0" selection-start="919" selection-end="919" vertical-scroll-proportion="0.0">
@@ -365,7 +362,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="149" column="18" selection-start="3637" selection-end="3637" vertical-scroll-proportion="0.7206573">
+        <state line="149" column="18" selection-start="3637" selection-end="3637" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="7" selection-start="13" selection-end="13" vertical-scroll-proportion="0.019953052">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/note.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="16" selection-start="498" selection-end="498" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="22" selection-start="40" selection-end="40" vertical-scroll-proportion="0.019953052">
           <folding />
         </state>
       </provider>

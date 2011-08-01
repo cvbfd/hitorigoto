@@ -25,6 +25,7 @@
     border: 1px solid #AAAAAA;
     border-radius: 3px 3px 3px 3px;
     font-family: 'Lucida Grande',sans-serif;
+    font-size: 14px;
     overflow: auto;
 }
 
