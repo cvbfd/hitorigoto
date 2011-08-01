@@ -9,6 +9,7 @@ $(function() {
         },
         clear: function() {
             this.destroy();
+            this.view.remove();
         }
     });
 
@@ -35,7 +36,7 @@ $(function() {
             _.bindAll(this, 'render', 'clear', 'updatePosition', 'updateContent', 'updateCounter');
 
             this.model.bind('change', this.updateCounter);
-            this.model.bind('remove', this.remove);
+            this.model.view = this;
         },
 
         render: function() {
@@ -60,7 +61,6 @@ $(function() {
         },
         clear: function() {
             this.model.clear();
-            $(this.el).remove();
         },
         updatePosition: function(event, ui) {
             this.model.save({
@@ -88,7 +88,7 @@ $(function() {
             'click div.publish': 'showPopup'
         },
         initialize: function() {
-            _.bindAll(this, 'render', 'addNote', 'appendNote');
+            _.bindAll(this, 'render', 'addNote', 'appendNote', 'onTweet');
 
             this.collection = new NoteList();
             this.collection.bind('reset', this.render);
@@ -134,14 +134,17 @@ $(function() {
                 T("#tweet-box").tweetBox({
                     label: 'tweet this?',
                     defaultContent: $('#' + id).find('textarea.tweet-box').val(),
-                    onTweet : function(plaintext, html) {
-                        self.showSuccess();
+                    onTweet : function(plainText, html) {
+                        this.onTweet(id, plainText)
                     }
                 });
             });
         },
-        showSuccess: function() {
+        onTweet: function(id, plainText) {
+            console.log(plainText);
             $('#dialog-box').html('<div class="dialog-content">tweeted!</div>');
+            var note = this.collection.get(id);
+            note.clear();
         },
         hidePopup: function() {
             $('#dialog-overlay, #dialog-box').hide();
