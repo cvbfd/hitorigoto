@@ -142,7 +142,6 @@ $(function() {
             });
         },
         onTweet: function(id, plainText) {
-            console.log(plainText);
             $('#dialog-box').html('<div class="dialog-content"><p>tweeted!</p></div>');
             var note = this.collection.get(id);
             note.clear();
